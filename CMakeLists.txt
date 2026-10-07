@@ -14,8 +14,7 @@ include(lib/pico-sdk/pico_sdk_init.cmake)
 include(lib/freertos/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 # Add Unity library and include directories
-add_library(unity lib/unity/src/unity.c)
-target_include_directories(unity PUBLIC ${UNITY_PATH}/src)
+include(unity.cmake)
 
 project(threading C CXX ASM)
 
@@ -49,6 +48,8 @@ target_link_libraries(lab4_test_signal PRIVATE
   pico_cyw43_arch_none
   unity
 )
+target_include_directories(lab4_test_signal PRIVATE include)
+
 pico_enable_stdio_uart(lab4_test_signal 0)
 pico_enable_stdio_usb(lab4_test_signal 1)
 add_custom_target(flash_test_signal
