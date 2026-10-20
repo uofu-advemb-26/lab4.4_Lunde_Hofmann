@@ -40,7 +40,7 @@ pico_sdk_init()
 #     picotool load -f $<TARGET_FILE:lab4_test_fifo> DEPENDS lab4_test_fifo)
 
 
-add_executable(lab4_test_signal test_signal.c)
+add_executable(lab4_test_signal test_signal.c signaling.c)
 target_link_libraries(lab4_test_signal PRIVATE
   pico_stdlib
   pico_async_context_freertos
